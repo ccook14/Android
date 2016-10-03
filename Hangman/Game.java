@@ -19,5 +19,18 @@ public class Game {
         } else {
             mMisses += letter;
         }
+		return isHit;
+    }
+    
+    public String getCurrentProgress() {
+    	String progress = "";
+    	for (char letter: mAnswer.toCharArray()) {
+    		char display = '-';
+    		if (mHits.indexOf(letter) >= 0) {
+    			display = letter;
+    		}
+    		progress += display;
+    	}
+    	return progress;
     }
 }
