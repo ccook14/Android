@@ -20,9 +20,21 @@ public class Prompter {
 	
 	public boolean promptForGuess() {
 		Console console = System.console();
-		String guessAsString = console.readLine("Enter a letter:  ");
-		char guess = guessAsString.charAt(0);
-		return mGame.applyGuess(guess);
+		boolean isHit = false;
+		boolean isValidGuess = false;
+		while (! isValidGuess) {
+			String guessAsString = console.readLine("Enter a letter:  ");
+			try {
+				isHit = mGame.applyGuess(guessAsString);
+				isValidGuess = true;
+			} catch (IllegalArgumentException iae) {
+				console.printf("%s. Please try again.\n", iae.getMessage());
+			}
+		}
+		
+		
+		
+		return isHit;
 		
 	}
 	
