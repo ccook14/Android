@@ -43,7 +43,15 @@ public class Thing {
 	  explore("Strings literals are actually referring to the same object",
 			  firstString == secondString);
 	  
+	  String differentString = new String("Colin");
+	  explore("String objects that contain the same characters but point to different objects cannot use double equls",
+			  firstString != differentString);
 	  
+	  String anotherString = new String("Colin");
+	  explore("String Interning adds to the same String Pool where literals live, so you get back the same reference",
+			  anotherString.intern() == firstString);
+	  explore("All Objects should use equls to check equality", 
+			  firstString.equals(differentString));
 	  
   }
 }
